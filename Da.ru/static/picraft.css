@@ -1,0 +1,152 @@
+* {
+    --picraft-back-1: #171717;
+    --picraft-border-1: #434343;
+    --picraft-btn-white: #434343;
+    --picraft-btn-white-hover: #5a5a5a;
+    --picraft-back-2: #111111;
+    --picraft-card-back: #202020;
+    --picraft-white: #fff;
+    --picraft-btn-primary: #37B223;
+    --picraft-btn-primary-hover: #47cc32;
+    --picraft-error: #ff0000;
+    font-family: 'Roboto', sans-serif;
+    color: var(--picraft-white);
+    font-size: 16pt;
+}
+
+body {
+    background: var(--picraft-back-1);    
+}
+
+.card {
+    border-color: var(--picraft-border-1);
+    background: var(--picraft-back-2);
+}
+
+.card-header {
+    border-color: var(--picraft-border-1);
+    background: var(--picraft-card-back);
+}
+
+.form-control, .form-control:focus {
+    background: transparent;
+    border-color: var(--picraft-border-1);
+    color: var(--picraft-white);
+    box-shadow: none;
+}
+
+.form-control::placeholder {
+    color: var(--picraft-border-1);
+}
+
+.link {
+    color: var(--picraft-white);
+    text-decoration: none;
+}
+
+.picraft-btn {
+    padding: 0.375rem;
+    border-radius: 0.375rem;
+    background: transparent;
+    border: none;
+    color: var(--picraft-border-1);
+    transition: color 75ms ease-in-out, background 75ms ease-in-out;
+    text-decoration: none;
+}
+
+.picraft-btn:hover {
+    color: var(--picraft-white);
+}
+
+.picraft-btn-primary {
+    color: var(--picraft-white);
+    background: var(--picraft-btn-primary);
+}
+
+.picraft-btn-primary:hover {
+    background: var(--picraft-btn-primary-hover);
+}
+
+.picraft-modal {
+    background: #0000008c;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.picraft-modal-card {
+    position: relative;
+    width: 22rem;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.picraft-btn-white {
+    color: var(--picraft-white);
+    background: var(--picraft-btn-white);
+}
+
+.picraft-btn-white:hover {
+    background: var(--picraft-btn-white-hover);
+}
+
+.picraft-switch {
+    appearance: none;
+    width: 2rem;
+    height: 1rem;
+    background: var(--picraft-back-1);
+    border-radius: 0.375rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.picraft-switch::before {
+    position: absolute;
+    height: 1rem;
+    width: 1rem;
+    background: var(--picraft-btn-white);
+    content: '';
+    left: 0;
+    transition: left 0.1s ease-in-out, background 0.1s ease-in-out;
+}
+
+.picraft-switch:checked::before {
+    left: 1rem;
+    background: var(--picraft-btn-primary);
+}
+
+.picraft-spinner {
+    animation: picraft-spinner 0.5s infinite linear !important;
+    width: 128px;
+    height: 128px;
+    display: none;
+} 
+
+@keyframes picraft-spinner {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(359deg);
+    }
+}
+
+.picraft-head.loading .picraft-spinner {
+    display: block;
+}
+
+.picraft-head.loading img {
+    filter: blur(10px);
+}
+
+.picraft-error {
+    color: var(--picraft-error);
+}
+
+.picraft-blur {
+    filter: blur(5px);
+}

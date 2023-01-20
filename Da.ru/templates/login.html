@@ -1,0 +1,27 @@
+{{ define "login" }}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>ThreeHead [Preview]</title>
+    {{ template "head" }}
+</head>
+<body>
+    <div class="container-sm d-flex justify-content-center">
+        <div class="card mt-5" style="width: 22rem;">
+            <div class="card-header d-flex align-items-center">
+                <img src="/static/icon.png" class="me-3" width="64">Авторизация
+            </div>
+            <form class="m-3" method="post" action="/a/login">
+                <input type="email" class="form-control mb-3" placeholder="E-Mail" name="email">
+                <input type="password" class="form-control mb-3" placeholder="Пароль" name="password">
+                <div class="d-flex">
+                    <button type="submit" class="picraft-btn picraft-btn-primary flex-grow-1 me-3">Войти</button>
+                    <a href="/create" class="picraft-btn flex-shrink-0">Создать аккаунт</a>
+                </div>
+                <!-- <a type="submit" class="link" href="/reset">Сбросить пароль</a> -->
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{{ end }}

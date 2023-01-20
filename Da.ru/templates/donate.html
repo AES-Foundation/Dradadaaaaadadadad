@@ -1,0 +1,23 @@
+{{ define "donate" }}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>ThreeHead [Preview]</title>
+    {{ template "head" }}
+</head>
+<body>
+    <div class="container-sm d-flex justify-content-center">
+        <div class="card mt-5" style="width: 22rem;">
+            <div class="card-header d-flex align-items-center">
+                Платёж
+            </div>
+            <form class="m-3" method="post" action="/a/donate">
+                <input type="text" class="form-control mb-3" placeholder="Рубли" name="amount">
+                <input type="hidden" name="paysystem" value="qiwi">
+                <button type="submit" class="picraft-btn picraft-btn-primary w-100">Оплатить</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{{ end }}

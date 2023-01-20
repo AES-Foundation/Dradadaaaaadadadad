@@ -1,0 +1,70 @@
+{{ define "avatar" }}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>ThreeHead [Preview]</title>
+    {{ template "head" }}
+</head>
+<body>
+    <div class="container d-flex flex-column">
+        {{ template "profileMenu" .User }}
+        <div id="content">
+            <div class="d-flex mt-3">
+                <div class="flex-grow-1 me-3 card w-100">
+                    <div class="card-header d-flex align-items-center">
+                        <img src="/static/icon.png" class="me-3" width="64">Генератор
+                    </div>
+                    <div class="m-3 d-flex flex-row">
+                        <div class="me-3 position-relative picraft-head" id="head">
+                            <img src="/static/icon.png">
+                            <div class="position-absolute top-50 start-50 spinner-border text-primary picraft-spinner" role="status"></div>
+                        </div>
+                        <form class="flex-grow-1 flex-shrink-1" id="generate">
+                            <input type="text" class="form-control mb-3" placeholder="Ник Майнкрафт" id="nickname">
+                            <div class="d-flex">
+                                <button type="submit" class="picraft-btn picraft-btn-primary flex-grow-1 flex-shrink-1 me-3">Сгенерировать</button>
+                                <button type="button" class="picraft-btn flex-shrink-0" id="download" style="flex-grow: 0.5;">Скачать</button>
+                            </div>
+                            <div class="mt-3 d-flex align-items-center" id="voxelCheckbox">
+                                <input type="checkbox" id="voxel" class="picraft-switch me-1">
+                                <label for="voxel">Режим Вокселя</label>
+                            </div>
+                            <div class="mt-3 picraft-error" id="error">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div style="width: 22rem;">
+                    <div class="card w-100 h-100">
+                        <div class="card-header d-flex align-items-center">
+                            <img src="/static/donate.png" class="me-3" width="64">ТОП ДОНАТЕРЫ
+                        </div>
+                        <div class="pt-3" style="overflow-y: auto; max-height: 14rem;">
+                            {{ range .TopDontaters }}
+                            <div class="m-3 mt-0">
+                                <b>{{ .FormattedAmount }} рублей</b> <span>{{ .DisplayName }}</span>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card w-100 mt-3">
+                <div class="card-header d-flex align-items-center">
+                    Последние твои запросы
+                </div>
+                <div class="ps-3 d-flex" style="overflow-x: auto;" id="headsList">
+                    {{ range .User.GetLastHeads 10 0 }}
+                    <div class="m-3 ms-0">
+                        <img src="/head/{{ .ID }}" width="64">
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/threehead.js"></script>
+    <script>avatar()</script>
+</body>
+</html>
+{{ end }}

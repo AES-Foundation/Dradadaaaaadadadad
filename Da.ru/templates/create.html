@@ -1,0 +1,41 @@
+{{ define "create" }}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>ThreeHead [Preview]</title>
+    {{ template "head" }}
+</head>
+<body>
+    <div class="container-sm d-flex justify-content-center">
+        <div class="card mt-5" style="width: 22rem;">
+            <div class="card-header d-flex justify-content-center">
+                Регестрация
+            </div>
+            <form class="m-3" method="post" action="/a/create" id="form">
+                <input type="email" class="form-control mb-3" placeholder="E-Mail" name="email">
+                <input type="password" class="form-control mb-3" placeholder="Пароль" name="password">
+                <input type="password" class="form-control mb-3" placeholder="Повтори пароль" name="repeat-password">
+                <button type="submit" class="picraft-btn picraft-btn-primary w-100 mb-3">Создать аккаунт</button>
+                <div>Вы принимаете <a href="/static/toa.txt" class="link"><b>условие соглашение</b></a></div>
+            </form>
+        </div>
+    </div>
+    <script>
+        $("#form").on("submit", (e) => {
+            let password = $('input[name="password"]')
+            let repeatPassword = $('input[name="repeat-password"]')
+            if (password.val() != repeatPassword.val()) {
+                e.preventDefault();
+                alert("Пароль не совпадает")
+                return
+            }
+            if (password.val().length < 8) {
+                e.preventDefault();
+                alert("Пароль не может быть меньше 8 символов")
+                return
+            }
+        })
+    </script>
+</body>
+</html>
+{{ end }}

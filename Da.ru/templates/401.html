@@ -1,0 +1,26 @@
+{{ define "401" }}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>ThreeHead [Preview]</title>
+    {{ template "head" }}
+</head>
+<body>
+    <div class="container-sm d-flex justify-content-center">
+        <div class="card mt-5" style="width: 28rem;">
+            <div class="card-header d-flex justify-content-center">
+                Ошибка 401
+            </div>
+            <div class="m-3">
+                Любезный друг, у тебя не достаточно прав чтоб просматривать данную страничку.
+            </div>
+        </div>
+    </div>
+    <script>
+        setTimeout(() => {
+            window.location.href = "/"
+        }, 3000);
+    </script>
+</body>
+</html>
+{{ end }}

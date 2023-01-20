@@ -1,0 +1,41 @@
+{{ define "settings" }}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>ThreeHead [Preview]</title>
+    {{ template "head" }}
+</head>
+<body>
+    <div class="container d-flex flex-column">
+        {{ template "profileMenu" .User }}
+        <div class="card w-100 mt-3" id="content">
+            <div class="card-header d-flex align-items-center">
+                Настройки
+            </div>
+            <form class="p-3">
+                <div class="d-flex align-items-center mb-3" id="displayNameField">
+                    <label for="displayName" class="me-3">Имя</label>
+                    <input type="text" class="form-control w-75" value="{{.User.DisplayName}}" id="displayName">
+                    <div class="spinner-border text-primary ms-3 d-none" role="status" id="loading" style="width: 1.2rem; height: 1.2rem;"></div>
+                </div>
+                <div class="d-flex align-items-center mb-3" id="hideInDonatersCheckbox">
+                    {{ if .User.IsHiddenInTopDonaters }}
+                    <input type="checkbox" id="hideInDonaters" class="picraft-switch me-1" checked>
+                    {{ else }}
+                    <input type="checkbox" id="hideInDonaters" class="picraft-switch me-1">
+                    {{ end }}
+                    <label for="voxel">Скрыть меня из список топ донатеров</label>
+                    <div class="spinner-border text-primary ms-3 d-none" role="status" id="loading" style="width: 1.2rem; height: 1.2rem;"></div>
+                </div>
+                <div class="d-flex align-items-center" id="clearHistoryField">
+                    <button type="button" class="picraft-btn picraft-btn-primary flex-shrink-0" id="clearHistory">Очистить историю</button>
+                    <div class="spinner-border text-primary ms-3 d-none" role="status" id="loading" style="width: 1.2rem; height: 1.2rem;"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/static/threehead.js"></script>
+    <script>settings()</script>
+</body>
+</html>
+{{ end }}
